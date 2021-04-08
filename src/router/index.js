@@ -1,6 +1,6 @@
 import Vue from 'vue'
 import Router from 'vue-router'
-const _import = require('./_import_' + process.env.NODE_ENV)
+const _import = require('./_import_' + process.env.NODE_ENV) // process.env.NODE_ENV 设置不同的环境（生产/测试）,通过config中的配置文件指定
 // in development-env not use lazy-loading, because lazy-loading too many pages will cause webpack hot update too slow. so only in production use lazy-loading;
 // detail: https://panjiachen.github.io/vue-element-admin-site/#/lazy-loading
 
@@ -35,7 +35,7 @@ export const constantRouterMap = [
   {
     path: '',
     component: Layout,
-    redirect: 'dashboard',
+    redirect: 'dashboard', // 重定向
     children: [{
       path: 'dashboard', component: _import('dashboard/index'), name: 'dashboard',
       meta: { title: 'dashboard', icon: 'dashboard', noCache: true }
@@ -56,7 +56,7 @@ export const constantRouterMap = [
 export default new Router({
   // mode: 'history', // require service support
   // base: '/mall/',
-  scrollBehavior: () => ({ y: 0 }),
+  scrollBehavior: () => ({ y: 0 }), // 当转到一个新的页面时，定位到最顶端
   routes: constantRouterMap
 })
 
